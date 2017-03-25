@@ -1,6 +1,6 @@
 # Mediators for Enterprise Integration Patterns
-This mediator works with native JSON in WSO2 ESB.
-Existing mediators do not support JSON manipulations.
+These mediators work with native JSON in WSO2 ESB.
+Existing mediators do not support JSON manipulations, hence message payload is converted to XML.
 
 Following mediators are implemented
 
@@ -18,10 +18,90 @@ Add following .jar files to *ESB_HOME/repository/components/dropins*
 
 ## Syntax
 
-## Examples
+* [Json Iterate Mediator Syntax](https://github.com/Buddhima/Json-EIP-Mediators/tree/master/JsonIterateMediator#syntax)
+* [Json Aggregate Mediator Syntax](https://github.com/Buddhima/Json-EIP-Mediators/tree/master/JsonAggregateMediator#syntax)
+
+## Example
+
+**Split-Aggregate Pattern**
+
+This pattern describes that incoming single request split in to number of requests and sending to backend.
+The responses from backend service(s) get aggregated before sending to the client.
+
+Sample ESB configuration is as below;
+
+```
+<api xmlns="http://ws.apache.org/ns/synapse" name="sampleApi" context="/sample">
+<resource methods="POST" uri-template="/*">
+<inSequence>
+    <log level="full"/>
+    <jsonIterate continueParent="false" preservePayload="true" expression="$.messages" attachPath="$.messages">
+        <target>
+            <sequence>
+                <log level="full"/>
+                <header name="To" value="http://www.mocky.io/v2/58d6459b100000e601949cb7"/>
+                <call/>
+            </sequence>
+        </target>
+    </jsonIterate>
+    <log level="full"/>
+    <jsonAggregate>
+        <completeCondition>
+            <messageCount min="-1" max="-1"/>
+        </completeCondition>
+        <onComplete expression="$.message" enclosingElementProperty="responses">
+            <log level="full"/>
+            <send/>
+        </onComplete>
+    </jsonAggregate>
+</inSequence>
+</resource>
+</api>
+```
+
+**Sample Request Payload**
+
+```
+{
+	"originator" : "my-company",
+	"messages" : [
+		{
+			"country" : "Sri Lanka",
+			"code" : "94"
+		},
+		{
+			"country" : "America",
+			"code" : "01"
+		},
+		{
+			"country" : "Australia",
+			"code" : "61"
+		}
+	]
+}
+```
+
+**Sample Response Payload**
+
+```
+{
+    "responses": [
+        {
+            "subject": "This is the reply",
+            "text": "Welcome back!!!"
+        },
+        {
+            "subject": "This is the reply",
+            "text": "Welcome back!!!"
+        },
+        {
+            "subject": "This is the reply",
+            "text": "Welcome back!!!"
+        }
+    ]
+}
+```
 
 ## Future Improvements
 
 If you have suggestions or issues, please mention them at "issues" section at GitHub repository.
-
-

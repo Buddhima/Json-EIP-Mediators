@@ -55,8 +55,12 @@ The following properties are available,
     <completeCondition>
         <messageCount min="-1" max="-1"/>
     </completeCondition>
-    <onComplete expression="$.getQuoteResponse">
+    <onComplete expression="$.getQuoteResponse" enclosingElementProperty="responseCollection">
         <send/>
     </onComplete>
 </jsonAggregate>
 ```
+
+## References
+
+[JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)

@@ -64,3 +64,6 @@ The following are **target** configurations,
     </target>
 </jsonIterate>
 ```
+## References
+
+[JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)
