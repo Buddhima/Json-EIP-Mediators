@@ -41,9 +41,9 @@ The following properties are available,
     * true - Split message is set to the element in **attachPath** attribute
     * false - (default) Split message is set as the complete payload within iterator
 
-* **expression** - JSONPath expression that matches the elements, which you want to split the message from.
+* **expression** - JSONPath expression[1] that matches the elements, which you want to split the message from.
 
-* **attachPath** - JSONPath expression for elements that the split elements should be attached. Use when **preservePayload** attribute is true. If not specified "$" JSONPath is used by default.
+* **attachPath** - JSONPath expression[1] for elements that the split elements should be attached. Use when **preservePayload** attribute is true. If not specified "$" JSONPath is used by default.
 
 The following are **target** configurations,
 
@@ -66,4 +66,4 @@ The following are **target** configurations,
 ```
 ## References
 
-[JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)
+1. [JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)

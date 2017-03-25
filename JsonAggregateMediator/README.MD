@@ -41,11 +41,11 @@ The following properties are available,
     * If timeout and min specified, the aggregation will complete if min no of messages not arrived before timeout.
 
 * On Complete
-    * **expression** - An JSONPath expression specifying which elements should be aggregated
+    * **expression** - An JSONPath expression[1] specifying which elements should be aggregated
     * **enclosingElementProperty** - The key value for attaching aggregated JSON payloads. Aggregated array of JSON payloads are set as a value against this key.
     * **sequence** - The sequence to run when the aggregation is complete. The sequence can be a one already saved in registry or can be specified inline between onComplete tags.
 
-* Correlate On - (optional) This is an JSONPath expression which provides the basis on which response messages should be selected for aggregation.
+* Correlate On - (optional) This is an JSONPath expression[1] which provides the basis on which response messages should be selected for aggregation.
     * **expression** - Incoming message should satisfy this JSONPath expression, to be a candidate for aggregation. For example; `$.store.book[?(@.price > 10)]`
 
 ## Example
@@ -63,4 +63,4 @@ The following properties are available,
 
 ## References
 
-[JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)
+1. [JSONPath Document](https://github.com/jayway/JsonPath/blob/json-path-2.1.0/README.md)

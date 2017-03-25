@@ -59,7 +59,7 @@ Sample ESB configuration is as below;
 </api>
 ```
 
-**Sample Request Payload**
+**Sample Request Payload from client**
 
 ```
 {
@@ -81,7 +81,31 @@ Sample ESB configuration is as below;
 }
 ```
 
-**Sample Response Payload**
+**Request sending to backend**
+
+```
+{
+  "originator": "my-company",
+  "messages": {
+    "country": "Sri Lanka",
+    "code": "94"
+  }
+}
+```
+
+**Response from backend**
+
+```
+{
+  "type": "response",
+  "message": {
+    "subject": "This is the reply",
+    "text": "Welcome back!!!"
+  }
+}
+```
+
+**Sample Response Payload to client**
 
 ```
 {
