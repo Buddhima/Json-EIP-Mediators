@@ -36,13 +36,13 @@ public class JsonAggregateMediator extends AbstractMediator implements ManagedLi
 
 	/**
 	 * JSONPath that specifies a correlation expression that can be used to combine messages. An
-	 * example maybe //department@id="11"
+	 * example maybe $.store.book[?(@.price > 10)]
 	 */
 	private String correlateExpression = null;
 	/**
 	 * An JSONPath expression that may specify a selected element to be aggregated from a group of
 	 * messages to create the aggregated message
-	 * e.g. //getQuote/return would pick up and aggregate the //getQuote/return elements from a
+	 * e.g. $.getQuoteResponse would pick up and aggregate the getQuoteResponse elements from a
 	 * bunch of matching messages into one aggregated message
 	 */
 	private String aggregationExpression = "$";
