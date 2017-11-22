@@ -14,7 +14,8 @@ Add following .jar files to *ESB_HOME/repository/components/dropins*
 
 * Json (Iterate/Aggregate) Mediator-1.0.0.jar
 * json-path-2.1.0.jar (external)
-* json-smart-2.2.jar (external)
+* json-smart-2.2.1.jar (external)
+* accessors-smart-1.1.jar (external)
 
 ## Syntax
 
